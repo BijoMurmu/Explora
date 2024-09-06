@@ -10,6 +10,7 @@ const {
   isReviewAuthor,
 } = require("../middleware.js");
 const reviewController = require("../controllers/reviews.js");
+
 // Reviews
 
 // Post Review Route
@@ -21,7 +22,6 @@ router.post(
 );
 
 // Delete Review Route
-
 router.delete(
   "/:reviewId",
   isLoggedIn,

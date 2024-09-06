@@ -21,6 +21,10 @@ router
 //New Route
 router.get("/new", isLoggedIn, listingController.renderNewForm);
 
+//Search Route
+router.get("/search", wrapAsync(listingController.searchListings));
+
+//Show Route
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
@@ -49,35 +53,5 @@ router.delete(
   wrapAsync(listingController.destroyListing)
 );
 
-// Search Route
-// router.get("/search", wrapAsync(listingController.searchListings));
-
-
 
 module.exports = router;
-
-
-
-// // Search Route
-// router.get(
-//   "/search",
-//   wrapAsync(async (req, res) => {
-//     const query = req.query.query;
-
-//     // If no query is provided, redirect to the listings page or show all listings
-//     if (!query) {
-//       return res.redirect("/listings");
-//     }
-
-//     // Perform the search using a case-insensitive regex query on the `name` and `location` fields
-//     const listings = await Listing.find({
-//       $or: [
-//         { name: { $regex: query, $options: "i" } },
-//         { location: { $regex: query, $options: "i" } },
-//       ],
-//     });
-
-//     // Render the search results page
-//     res.render("listings/search.ejs", { listings, query });
-//   })
-// );
