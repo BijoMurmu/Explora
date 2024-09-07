@@ -1,10 +1,18 @@
 <% layout('layouts/boilerplate.ejs') -%>
 
 <style>
+  .filter-container{
+     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
   #filters {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    overflow-y: hidden;
   }
   .filter {
     text-align: center;
@@ -39,7 +47,10 @@
   .tax-toggle:hover{
     border: 1px solid rgb(0,0,0,1);
   }
+
 </style>
+
+<div class="filter-container">
 
 <div id="filters">
 
@@ -97,6 +108,7 @@
     <div><i class="fa-solid fa-ship"></i></i></div>
     <p>Boats</p>
   </div>
+</div>
 
   <div class="tax-toggle">
     <div class="form-check-reverse form-switch">
@@ -110,9 +122,12 @@
         ><b>Display total after taxes</b></label
       >
     </div>
+
   </div>
 
-</div>
+ </div> 
+
+
 
 <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
   <% for(let listing of allListings) { %>
