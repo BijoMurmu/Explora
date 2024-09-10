@@ -13,8 +13,8 @@ router
   .get(wrapAsync(listingController.index))
   .post(
     isLoggedIn,
-    upload.single("listing[image]"),
     validateListing,
+    upload.single("listing[image]"),
     wrapAsync(listingController.createListing)
   );
 
@@ -45,13 +45,12 @@ router.get(
   wrapAsync(listingController.renderEditForm)
 );
 
-//Delete Route
-router.delete(
-  "/:id",
-  isLoggedIn,
-  isOwner,
-  wrapAsync(listingController.destroyListing)
-);
-
+// //Delete Route
+// router.delete(
+//   "/:id",
+//   isLoggedIn,
+//   isOwner,
+//   wrapAsync(listingController.destroyListing)
+// );
 
 module.exports = router;
