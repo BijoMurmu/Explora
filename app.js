@@ -91,8 +91,8 @@ app.all("*", (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  let { statusCode = 500, message = "Something went wrong!" } = err;
-  console.error("Error stack:", err.stack); // Log the error stack
+  let { statusCode = 500, message} = err;
+  console.error("Error stack:", err.stack); // Log the error stack // this line has been rendered. 
   res.status(statusCode).render("error.ejs", { message });
 });
 
