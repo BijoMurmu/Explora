@@ -12,7 +12,7 @@ module.exports.signup = async (req, res) => {
     console.log(registeredUser);
     req.login(registeredUser, (err) => {
       if (err) {
-        return next();
+        return next(err);
       }
       req.flash("success", "Welcome to Explora!");
       res.redirect("/listings");
